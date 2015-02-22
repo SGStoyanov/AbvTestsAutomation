@@ -1,0 +1,6 @@
+1424430837416	Rename local variable 'loginButtonLocation'
+1424430842794	Rename local variable 'ComposeMailButtonLocation'
+1424431045965	Rename local variable 'loginButton'
+1424436019359	Rename type 'AbvTest1'
+1424436290483	Rename package 'libs.libs'
+1424437276924	Rename type 'ShouldSendEmailWithRecepientSubjectAndText'

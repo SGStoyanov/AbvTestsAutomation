@@ -1,0 +1,34 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import abvEmailsSending.AbvMailbox;
+
+public class ShouldSendEmailWithAllDetails {
+
+	@Test
+	public void shouldOpenAndMaximizeWebSite() {
+		WebDriver driver = new FirefoxDriver();
+		AbvMailbox.navigateToSite(driver, "http://abv.bg");
+		driver.manage().window().maximize();
+		
+		WebElement initialMessage = driver.findElement(By.cssSelector("#leftSide>h2"));
+		String initialMessageStr = initialMessage.getText();
+		
+		assertEquals("Вход в АБВ Поща", initialMessageStr);
+		driver.close();
+	}
+
+	@Test
+	public void shouldOpenMaximizeAndLogin() {
+		
+	}
+}

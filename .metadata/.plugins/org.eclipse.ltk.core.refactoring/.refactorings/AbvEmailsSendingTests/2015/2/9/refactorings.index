@@ -1,0 +1,5 @@
+1424624697288	Rename method 'test'
+1424624707123	Rename method 'ShouldOpenWebSite'
+1424624748185	Rename method 'shouldOpenWebSite'
+1424634912152	Rename type 'ShouldSendEmailWithAllDetails'
+1424634933445	Rename type 'ShouldSendEmailWithRecepientAndSubject'

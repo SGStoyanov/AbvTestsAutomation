@@ -1,0 +1,70 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
+
+import abvEmailsSending.AbvMailbox;
+
+public class ShouldSendEmailWithAllDetails {
+	private WebDriver driver;
+	
+//	@Test
+//	public void shouldOpenAndMaximizeWebSite() {
+//		WebDriver driver = new FirefoxDriver();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		
+//		AbvMailbox.navigateToSite(driver, "http://abv.bg");
+//		driver.manage().window().maximize();
+//		
+//		WebElement initialMessage = driver.findElement(By.cssSelector("#leftSide>h2"));
+//		String initialMessageStr = initialMessage.getText();
+//		
+//		assertEquals("Вход в АБВ Поща", initialMessageStr);
+//		driver.close();
+//	}
+
+	
+//	@BeforeClass
+//	public void startWeb() {
+//		WebDriver driver = new FirefoxDriver();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		
+//		AbvMailbox.navigateToSite(driver, "http://abv.bg");
+//		driver.manage().window().maximize();
+//		
+//		AbvMailbox.loginToSite(driver);
+//	}
+		
+	public void ShutdownWeb() {
+        driver.close();
+        driver.quit();
+    }
+	
+	@Test
+	public void shouldOpenMaximizeAndLogin() {
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		AbvMailbox.navigateToSite(driver, "http://abv.bg");
+		driver.manage().window().maximize();
+		
+		AbvMailbox.loginToSite(driver);
+		
+		WebElement loggedInMessage = driver.findElement(By.cssSelector("#middlePagePanel>.h1"));
+		String loggedInMessageStr = loggedInMessage.getText();
+		String[] loggedInMessageArray = loggedInMessageStr.split(",");
+		String loggedInMessageHello = loggedInMessageArray[0];
+		System.out.println(loggedInMessageStr);
+		
+		assertEquals("Здравейте", loggedInMessageHello);
+		ShutdownWeb();
+	}
+}

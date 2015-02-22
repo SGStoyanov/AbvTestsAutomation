@@ -1,0 +1,16 @@
+1424609577085	Move compilation unit
+1424609637410	Move compilation unit
+1424609673372	Rename package 'AbvMailbox'
+1424609690363	Delete element
+1424609737428	Rename package 'abvMailbox'
+1424609999839	Delete element
+1424610081211	Delete element
+1424610438407	Move compilation units
+1424610448503	Delete element
+1424611089017	Extract method 'navigateToSite'
+1424611140192	Extract method 'loginToSite'
+1424611417584	Extract method 'sendMail'
+1424623581851	Rename type 'AbvMailboxSendingMessagesWithAllDetails'
+1424623826242	Extract method 'confirmSending'
+1424634770474	Rename package 'abvEmailsSending'
+1424634791010	Rename type 'AbvMailbox'

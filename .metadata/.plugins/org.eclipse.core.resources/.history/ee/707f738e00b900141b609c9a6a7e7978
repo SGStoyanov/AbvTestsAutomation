@@ -1,0 +1,13 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class ShouldSendEmailWithRecepientSubjectAndText {
+
+	@Test
+	public void ShouldSendEmailWithRecepientSubjectAndText() {
+		fail("Not yet implemented");
+	}
+
+}

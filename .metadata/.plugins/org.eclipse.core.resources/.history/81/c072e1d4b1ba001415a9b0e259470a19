@@ -1,0 +1,78 @@
+package abvEmailsSending;
+import java.util.concurrent.TimeUnit;
+//import org.junit.*;
+//import org.junit.runner.JUnitCore;
+//import org.junit.runner.Result;
+//import org.junit.runner.notification.Failure;
+import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class AbvMailboxSendingMessagesWithAllDetails {
+	
+	public static void main(String[] args) {
+		WebDriver driver = new FirefoxDriver();
+	      // 10 seconds before throwing exception
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      
+	      navigateToSite(driver, "http://abv.bg/");
+	      
+	      //Maximize the browser
+	      driver.manage().window().maximize();
+	      
+	      loginToSite(driver);
+	      
+	      sendMail(driver);
+	      
+	      WebElement sendingConfirmationMessage = driver.findElement(By.xpath("//*[contains(text(), 'Писмото беше изпратено успешно!')]"));
+	      String sendingMessageResult = sendingConfirmationMessage.getText();
+	      assertEquals(sendingMessageResult, "Писмото беше изпратено успешно!");
+	      System.out.println(sendingConfirmationMessage.getText());
+	      
+	      //Close the Browser.
+	      driver.close();
+	}
+
+	private static void sendMail(WebDriver driver) {
+		WebElement composeMailButton = driver.findElement(By.xpath(
+	    		  ".//*[@id='main']/div/div[4]/div/div[4]/div/div[2]/div/div[2]/div/div[3]/div"));
+	      WebDriverWait wait = new WebDriverWait(driver, 3);
+	      wait.until(ExpectedConditions.elementToBeClickable(composeMailButton));
+	      
+	      composeMailButton.click();
+	      
+	      WebElement receipients = driver.findElement(By.xpath(
+	    		  ".//*[@id='main']/div/div[4]/div/div[4]/div/div[4]/div/div[2]/div/div[2]/div/div[2]/div[1]/table/tbody/tr[2]/td[2]/div/input"));
+	      receipients.sendKeys("testingbox@abv.bg");
+	      
+	      WebElement subjectTextbox = driver.findElement(By.xpath(
+	    		  ".//*[@id='main']/div/div[4]/div/div[4]/div/div[4]/div/div[2]/div/div[2]/div/div[2]/div[1]/table/tbody/tr[5]/td[2]/div/input"));
+	      subjectTextbox.click(); // click to resolve the recipients addresses 
+	      subjectTextbox.sendKeys("Test Subject 1");
+	      
+	      WebElement messageBody = driver.findElement(By.className("gwt-RichTextArea"));
+	      messageBody.sendKeys("Test message body");
+	      
+	      WebElement sendMailButton = driver.findElement(By.className("abv-button"));
+	      sendMailButton.click();
+	}
+
+	private static void loginToSite(WebDriver driver) {
+		WebElement usernameTextBox = driver.findElement(By.xpath(".//*[@id='username']"));
+	      WebElement passwordTextBox = driver.findElement(By.xpath(".//*[@id='password']"));
+	      String username = "testingbox";
+	      String password = "111333a";
+	      usernameTextBox.sendKeys(username);
+	      passwordTextBox.sendKeys(password);
+	      WebElement loginButton = driver.findElement(By.xpath(".//*[@id='loginBut']"));
+	      loginButton.click();
+	}
+
+	private static void navigateToSite(WebDriver driver, String site) {
+		//Launch website
+	      driver.navigate().to(site);
+	}
+}
