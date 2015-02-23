@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,11 +12,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import abv.AbvMailboxWithAllDetails;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AbvMailboxWithAllDetailsTests {
 	
 	@Test
-	public void stage1_shouldOpenAndMaximizeWebSite() {
+	public void shouldOpenAndMaximizeWebSite() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
@@ -35,7 +32,7 @@ public class AbvMailboxWithAllDetailsTests {
 	}
 	
 	@Test
-	public void stage2_shouldOpenMaximizeAndLogin() {
+	public void shouldOpenMaximizeAndLogin() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
@@ -57,7 +54,7 @@ public class AbvMailboxWithAllDetailsTests {
 	}
 	
 	@Test
-	public void stage3_shouldOpenMaximizeLoginAndSendEmailWithSubjectAndBody() {
+	public void shouldOpenMaximizeLoginAndSendEmailWithSubjectAndBody() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		

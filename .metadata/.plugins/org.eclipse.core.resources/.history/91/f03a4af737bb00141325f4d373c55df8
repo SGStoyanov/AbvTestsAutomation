@@ -4,25 +4,23 @@ import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import abv.AbvMailboxWithAllDetails;
+import abv.AbvMailboxWithRecepientAndSubjectOnly;;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class AbvMailboxWithAllDetailsTests {
-	
+public class AbvMailboxWithRecepientAndSubjectOnlyTests {
+
 	@Test
-	public void stage1_shouldOpenAndMaximizeWebSite() {
+	public void shouldOpenAndMaximizeWebSite() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		AbvMailboxWithAllDetails.navigateToSite(driver, "http://abv.bg");
+		AbvMailboxWithRecepientAndSubjectOnly.navigateToSite(driver, "http://abv.bg");
 		driver.manage().window().maximize();
 		
 		WebElement initialMessage = driver.findElement(By.cssSelector("#leftSide>h2"));
@@ -35,14 +33,14 @@ public class AbvMailboxWithAllDetailsTests {
 	}
 	
 	@Test
-	public void stage2_shouldOpenMaximizeAndLogin() {
+	public void shouldOpenMaximizeAndLogin() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		AbvMailboxWithAllDetails.navigateToSite(driver, "http://abv.bg");
+		AbvMailboxWithRecepientAndSubjectOnly.navigateToSite(driver, "http://abv.bg");
 		driver.manage().window().maximize();
 		
-		AbvMailboxWithAllDetails.loginToSite(driver);
+		AbvMailboxWithRecepientAndSubjectOnly.loginToSite(driver);
 		
 		WebElement loggedInMessage = driver.findElement(By.cssSelector("#middlePagePanel>.h1"));
 		String loggedInMessageStr = loggedInMessage.getText();
@@ -57,7 +55,7 @@ public class AbvMailboxWithAllDetailsTests {
 	}
 	
 	@Test
-	public void stage3_shouldOpenMaximizeLoginAndSendEmailWithSubjectAndBody() {
+	public void shouldOpenMaximizeLoginAndSendEmailWithSubjectOnly() {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
@@ -75,5 +73,5 @@ public class AbvMailboxWithAllDetailsTests {
 		driver.close();
         driver.quit();
 	}
-	
+
 }

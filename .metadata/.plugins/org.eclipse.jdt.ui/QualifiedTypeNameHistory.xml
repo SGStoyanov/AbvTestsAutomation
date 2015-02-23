@@ -13,4 +13,6 @@
 <fullyQualifiedTypeName name="abvEmailsSending.AbvMailbox"/>
 <fullyQualifiedTypeName name="abv.AbvMailboxWithRecepientAndSubjectOnly"/>
 <fullyQualifiedTypeName name="abv.AbvMailboxWithAllDetails"/>
+<fullyQualifiedTypeName name="org.junit.FixMethodOrder"/>
+<fullyQualifiedTypeName name="org.junit.runners.MethodSorters"/>
 </qualifiedTypeNameHistroy>
